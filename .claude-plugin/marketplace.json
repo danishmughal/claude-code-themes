@@ -1,0 +1,12 @@
+{
+  "name": "claude-code-themes",
+  "description": "Color themes for Claude Code's replies, as a mod",
+  "owner": { "name": "Danish Mughal", "url": "https://github.com/danishmughal" },
+  "plugins": [
+    {
+      "name": "themes",
+      "source": "./",
+      "description": "Draws Claude's replies in a Monokai Pro theme, with highlighted code blocks"
+    }
+  ]
+}

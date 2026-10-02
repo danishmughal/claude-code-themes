@@ -1,0 +1,25 @@
+{
+  "name": "themes",
+  "displayName": "Claude Code Themes",
+  "description": "Draws Claude's replies in color: headings, bold, italics, inline code, links, list markers and highlighted code blocks, in a Monokai Pro theme. Display only: the stored transcript and what Claude reads are unchanged.",
+  "author": { "name": "Danish Mughal", "url": "https://github.com/danishmughal" },
+  "repository": "https://github.com/danishmughal/claude-code-themes",
+  "license": "MIT",
+  "keywords": ["mod", "theme", "monokai", "markdown", "syntax-highlighting"],
+  "userConfig": {
+    "theme": {
+      "type": "string",
+      "title": "Theme",
+      "description": "The palette replies are drawn in. Pick the one your terminal theme uses.",
+      "options": [
+        "monokai-pro",
+        "monokai-pro-classic",
+        "monokai-pro-machine",
+        "monokai-pro-octagon",
+        "monokai-pro-ristretto",
+        "monokai-pro-spectrum"
+      ],
+      "default": "monokai-pro-classic"
+    }
+  }
+}
