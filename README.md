@@ -29,7 +29,9 @@ claude plugin install themes@claude-code-themes
 The repository is private, so the machine needs git access to it: a GitHub
 SSH key loaded in `ssh-agent`, or `gh auth login` then `gh auth setup-git`.
 
-Start a new session. `/plugin` shows `1 mod active · themes` when it loaded.
+The install may print `1 userConfig option not yet set`. That's the theme
+choice; until you pick one, the default applies. Start a new session.
+`/plugin` shows `1 mod active · themes` when it loaded.
 
 ## Pick a theme
 
