@@ -17,7 +17,8 @@ let theme: Theme
 
 // Element string and Markdown text limits
 const MAX_CHARS = 10000
-// The reply bullet: BLACK CIRCLE FOR RECORD, U+23FA
+// The reply bullet: BLACK CIRCLE FOR RECORD, U+23FA, which Claude Code draws on
+// macOS. Elsewhere it draws U+25CF; a mod has no way to read the platform.
 const BULLET = String.fromCodePoint(0x23fa)
 // Claude Code caps a nested list's indent at this many columns
 const MAX_INDENT = 32

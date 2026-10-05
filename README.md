@@ -6,6 +6,8 @@ fixed 16-color table; its `/theme` setting reaches neither. This plugin is a
 [mod](https://code.claude.com/docs/en/plugins/mods/overview) that redraws each
 reply in a Monokai Pro palette:
 
+![The same reply in stock Claude Code, left, and with the monokai-pro-classic theme, right](docs/screenshots/before-after.png)
+
 | In a reply | Color |
 | :- | :- |
 | Headings, list markers | green |
@@ -46,6 +48,12 @@ theme; Warp, iTerm2 and most editors ship a Monokai Pro theme of each name.
 | `monokai-pro-octagon` | `#ff657a` | `#ff9b5e` | `#ffd76d` | `#bad761` | `#9cd1bb` | `#c39ac9` |
 | `monokai-pro-ristretto` | `#fd6883` | `#f38d70` | `#f9cc6c` | `#adda78` | `#85dacc` | `#a8a9eb` |
 | `monokai-pro-spectrum` | `#fc618d` | `#fd9353` | `#fce566` | `#7bd88f` | `#5ad4e6` | `#948ae3` |
+
+![The same reply in each of the six themes, on each theme's terminal background](docs/screenshots/themes.png)
+
+The screenshots are real Claude Code sessions, each on its theme's Monokai Pro
+terminal background. Single shots of every theme, and of stock Claude Code,
+are in [`docs/screenshots`](docs/screenshots).
 
 To change it, run `/plugin configure themes@claude-code-themes` in a session,
 or set it when you install:
