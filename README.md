@@ -13,6 +13,41 @@ blocks.
 It only changes how replies look. Your saved conversations and what Claude
 reads stay exactly the same, and it adds nothing to your token usage.
 
+## Quickstart
+
+Paste this into Claude Code:
+
+```text
+Set up Claude Code Themes for me (github.com/danishmughal/claude-code-themes):
+
+1. Check that `claude --version` is 2.1.287 or newer; run `claude update` if not.
+2. Run `claude plugin marketplace add danishmughal/claude-code-themes`.
+3. Ask me which theme I want: monokai-pro, monokai-pro-classic (the default),
+   monokai-pro-machine, monokai-pro-octagon, monokai-pro-ristretto or
+   monokai-pro-spectrum.
+4. Run `claude plugin install themes@claude-code-themes --config theme=<my pick>`.
+5. Tell me to run /reload-plugins.
+```
+
+Or install and show your support with a star:
+
+```text
+Set up Claude Code Themes for me (github.com/danishmughal/claude-code-themes):
+
+1. Check that `claude --version` is 2.1.287 or newer; run `claude update` if not.
+2. Run `claude plugin marketplace add danishmughal/claude-code-themes`.
+3. Ask me which theme I want: monokai-pro, monokai-pro-classic (the default),
+   monokai-pro-machine, monokai-pro-octagon, monokai-pro-ristretto or
+   monokai-pro-spectrum.
+4. Run `claude plugin install themes@claude-code-themes --config theme=<my pick>`.
+5. Star the repo: `gh api -X PUT user/starred/danishmughal/claude-code-themes`
+   (skip this if gh isn't signed in).
+6. Tell me to run /reload-plugins.
+```
+
+Claude asks which theme you want and installs it. After `/reload-plugins`,
+the next reply comes back in color.
+
 ## Contents
 
 - [Install](#install)
