@@ -1,29 +1,24 @@
 # Claude Code Themes
 
-Color for Claude Code's replies. Claude Code draws bold, italics and headings
-as plain weight in the body text color, and highlights code blocks with a
-fixed 16-color table; its `/theme` setting reaches neither. This plugin is a
-[mod](https://code.claude.com/docs/en/plugins/mods/overview) that redraws each
-reply in a Monokai Pro palette:
+Monokai Pro colors for Claude Code's replies.
 
-![The same reply in stock Claude Code, left, and with the monokai-pro-classic theme, right](docs/screenshots/before-after.png)
+Out of the box, Claude Code draws bold text, italics and headings in the same
+color as everything else, and colors code blocks from a fixed set of 16
+terminal colors. Its `/theme` setting can't change either. This plugin can.
+It's a [mod](https://code.claude.com/docs/en/plugins/mods/overview) that
+redraws each reply with a full palette: colored headings and emphasis,
+highlighted inline code and links, and Monokai syntax highlighting in code
+blocks.
 
-| In a reply | Color |
-| :- | :- |
-| Headings, list markers | green |
-| Bold, italic | blue |
-| Inline code, code blocks with no language | orange |
-| Link text | purple |
-| Code blocks | Monokai: keywords red, declarations blue, strings yellow, numbers purple, functions and types green, comments gray |
-
-It only changes what's drawn. The saved transcript and what Claude reads are
-untouched, and it adds no tokens to any request.
+It only changes how replies look. Your saved conversations and what Claude
+reads stay exactly the same, and it adds nothing to your token usage.
 
 ## Contents
 
 - [Install](#install)
-- [Pick a theme](#pick-a-theme)
+- [Choose a theme](#choose-a-theme)
 - [Themes](#themes)
+  - [Claude Code default](#claude-code-default)
   - [monokai-pro](#monokai-pro)
   - [monokai-pro-classic](#monokai-pro-classic)
   - [monokai-pro-machine](#monokai-pro-machine)
@@ -31,57 +26,71 @@ untouched, and it adds no tokens to any request.
   - [monokai-pro-ristretto](#monokai-pro-ristretto)
   - [monokai-pro-spectrum](#monokai-pro-spectrum)
 - [Update](#update)
-- [If replies aren't colored](#if-replies-arent-colored)
+- [Troubleshooting](#troubleshooting)
 - [How it works](#how-it-works)
-- [Vendored code](#vendored-code)
+- [Third-party code](#third-party-code)
 - [License](#license)
 
 ## Install
 
-You need Claude Code 2.1.287 or later and a truecolor terminal.
+You need Claude Code 2.1.287 or later, and a terminal that shows full 24-bit
+color.
 
 ```bash
 claude plugin marketplace add danishmughal/claude-code-themes
 claude plugin install themes@claude-code-themes
 ```
 
-The repository is private, so the machine needs git access to it: a GitHub
-SSH key loaded in `ssh-agent`, or `gh auth login` then `gh auth setup-git`.
+This repository is private, so the machine needs GitHub access to it: either
+an SSH key loaded in `ssh-agent`, or `gh auth login` followed by
+`gh auth setup-git`.
 
-The install may print `1 userConfig option not yet set`. That's the theme
-choice; until you pick one, the default applies. Start a new session.
-`/plugin` shows `1 mod active · themes` when it loaded.
+Then start a new session. To confirm the plugin loaded, run `/plugin`; it
+shows `1 mod active · themes`.
 
-## Pick a theme
+If the install prints `1 userConfig option not yet set`, that's only the theme
+choice. Until you pick one, you get the default, `monokai-pro-classic`.
 
-The default is `monokai-pro-classic`. Use the one that matches your terminal
-theme; Warp, iTerm2 and most editors ship a Monokai Pro theme of each name.
+## Choose a theme
 
-| Theme | Red | Orange | Yellow | Green | Blue | Purple |
-| :- | :- | :- | :- | :- | :- | :- |
-| `monokai-pro` | `#ff6188` | `#fc9867` | `#ffd866` | `#a9dc76` | `#78dce8` | `#ab9df2` |
-| `monokai-pro-classic` | `#f92672` | `#fd971f` | `#e6db74` | `#a6e22e` | `#66d9ef` | `#ae81ff` |
-| `monokai-pro-machine` | `#ff6d7e` | `#ffb270` | `#ffed72` | `#a2e57b` | `#7cd5f1` | `#baa0f8` |
-| `monokai-pro-octagon` | `#ff657a` | `#ff9b5e` | `#ffd76d` | `#bad761` | `#9cd1bb` | `#c39ac9` |
-| `monokai-pro-ristretto` | `#fd6883` | `#f38d70` | `#f9cc6c` | `#adda78` | `#85dacc` | `#a8a9eb` |
-| `monokai-pro-spectrum` | `#fc618d` | `#fd9353` | `#fce566` | `#7bd88f` | `#5ad4e6` | `#948ae3` |
+There's one theme for each of the six Monokai Pro palettes. Pick the one that
+matches your terminal's theme; Warp includes all six.
 
-To change it, run `/plugin configure themes@claude-code-themes` in a session,
-or set it when you install:
+Switch anytime with `/plugin configure themes@claude-code-themes` inside
+Claude Code, or choose one when you install:
 
 ```bash
 claude plugin install themes@claude-code-themes --config theme=monokai-pro
 ```
 
+Every theme colors the same parts of a reply:
+
+| Part of a reply | Color |
+| :- | :- |
+| Headings and list markers | green |
+| Bold and italic text | blue |
+| Inline code, and code blocks with no language | orange |
+| Link text | purple |
+| Code blocks | keywords red, declarations blue, strings yellow, numbers purple, functions and types green, comments gray |
+
 ## Themes
 
 Each screenshot is a real Claude Code session showing the same reply, on the
-theme's own Monokai Pro terminal background. For comparison, here is
-[stock Claude Code](docs/screenshots/default.png).
+theme's matching terminal background.
+
+### Claude Code default
+
+For comparison, this is a reply without the plugin. Bold is only heavier,
+headings are plain, and code uses the terminal's 16 basic colors.
+
+![A Claude Code reply with Claude Code's own dark theme](docs/screenshots/default.png)
 
 ### monokai-pro
 
 The Monokai Pro default, on a warm charcoal background, `#2d2a2e`.
+
+`#ff6188` red · `#fc9867` orange · `#ffd866` yellow · `#a9dc76` green ·
+`#78dce8` blue · `#ab9df2` purple
 
 ![A Claude Code reply in the monokai-pro theme](docs/screenshots/monokai-pro.png)
 
@@ -89,11 +98,17 @@ The Monokai Pro default, on a warm charcoal background, `#2d2a2e`.
 
 The original Monokai colors, on `#272822`. This is the plugin's default.
 
+`#f92672` red · `#fd971f` orange · `#e6db74` yellow · `#a6e22e` green ·
+`#66d9ef` blue · `#ae81ff` purple
+
 ![A Claude Code reply in the monokai-pro-classic theme](docs/screenshots/monokai-pro-classic.png)
 
 ### monokai-pro-machine
 
 Cooler, brighter colors on a blue-gray background, `#273136`.
+
+`#ff6d7e` red · `#ffb270` orange · `#ffed72` yellow · `#a2e57b` green ·
+`#7cd5f1` blue · `#baa0f8` purple
 
 ![A Claude Code reply in the monokai-pro-machine theme](docs/screenshots/monokai-pro-machine.png)
 
@@ -101,17 +116,26 @@ Cooler, brighter colors on a blue-gray background, `#273136`.
 
 Softer, muted colors on a navy background, `#282a3a`.
 
+`#ff657a` red · `#ff9b5e` orange · `#ffd76d` yellow · `#bad761` green ·
+`#9cd1bb` blue · `#c39ac9` purple
+
 ![A Claude Code reply in the monokai-pro-octagon theme](docs/screenshots/monokai-pro-octagon.png)
 
 ### monokai-pro-ristretto
 
 Warm colors on a dark brown background, `#2c2525`.
 
+`#fd6883` red · `#f38d70` orange · `#f9cc6c` yellow · `#adda78` green ·
+`#85dacc` blue · `#a8a9eb` purple
+
 ![A Claude Code reply in the monokai-pro-ristretto theme](docs/screenshots/monokai-pro-ristretto.png)
 
 ### monokai-pro-spectrum
 
 Saturated colors on a neutral gray background, `#222222`.
+
+`#fc618d` red · `#fd9353` orange · `#fce566` yellow · `#7bd88f` green ·
+`#5ad4e6` blue · `#948ae3` purple
 
 ![A Claude Code reply in the monokai-pro-spectrum theme](docs/screenshots/monokai-pro-spectrum.png)
 
@@ -121,46 +145,51 @@ Saturated colors on a neutral gray background, `#222222`.
 claude plugin update themes@claude-code-themes
 ```
 
-Or turn on auto-update for the marketplace under **Marketplaces** in `/plugin`.
+Or turn on auto-update for this marketplace under **Marketplaces** in
+`/plugin`.
 
-## If replies aren't colored
+## Troubleshooting
 
-- **`/plugin` shows no active mod.** Sessions on a Claude Code older than
-  2.1.287 cache a flag that turns mods off, and newer sessions read it at
-  startup. Restart the old sessions, or run `claude -p /cost` once to refresh
-  the cache, then start a new session.
-- **Another mod redraws replies too.** Only one mod can draw a reply; turn
-  the other off in `/plugin`.
-- **Some blocks keep Claude Code's look.** Tables, quotes, code in a language
-  this plugin doesn't bundle, and the desktop app are left to Claude Code.
+- **`/plugin` doesn't list the mod.** Claude Code sessions older than 2.1.287
+  save a setting that switches mods off, and newer sessions read it when they
+  start. Restart any old sessions, or run `claude -p /cost` once to refresh
+  the setting, then open a new session.
+- **Another mod also redraws replies.** Only one mod can draw a reply, so turn
+  the other one off in `/plugin`.
+- **Some parts still look like stock Claude Code.** Tables, quotes, code in a
+  language this plugin doesn't include, and the Claude desktop app keep
+  Claude Code's own look.
 
 ## How it works
 
-`hooks/register.ts` handles one event, `ui.render` for `AssistantMessage`.
-`hooks/draw.ts` parses the reply with the same markdown lexer Claude Code uses
-(marked, with Claude Code's two tokenizer settings), so line breaks, list
-markers, numbering and spacing match, and draws paragraphs, lists, headings
-and code blocks as colored text. `hooks/highlight.ts` highlights code with
-highlight.js and the scope rules of Claude Code's own Monokai Extended table.
-`hooks/palettes.ts` holds the themes; adding one is a new entry there and in
-the `options` list in `.claude-plugin/plugin.json`.
+The plugin handles one event: Claude Code asking how to draw a reply
+(`ui.render` for `AssistantMessage`).
 
-To work on it:
+- `hooks/draw.ts` reads the reply with the same markdown parser Claude Code
+  uses (marked, with Claude Code's settings), so line breaks, lists, numbering
+  and spacing match what Claude Code would draw. It then draws paragraphs,
+  lists, headings and code blocks in color.
+- `hooks/highlight.ts` highlights code with highlight.js, using the token rules
+  of Claude Code's built-in Monokai Extended colors.
+- `hooks/palettes.ts` holds the themes. To add one, add an entry there and its
+  name to the `options` list in `.claude-plugin/plugin.json`.
+
+To work on the plugin:
 
 ```bash
-claude --plugin-dir .      # loads this checkout, reloads on save
+claude --plugin-dir .      # load this checkout; edits reload as you save
 claude plugin validate .
 claude plugin test
 ```
 
-## Vendored code
+## Third-party code
 
-- `hooks/vendor/marked.js`: marked 18.0.14, `lib/marked.esm.js` from the npm
-  package (MIT, `hooks/vendor/marked.LICENSE`)
-- `hooks/vendor/hljs/`: highlight.js 11.12.0, `es/core.js` and
-  `es/languages/<name>.min.js` from `@highlightjs/cdn-assets`, saved as
-  `<name>.js` (BSD-3-Clause, `hooks/vendor/hljs/LICENSE`). To add a language,
-  copy its file in and register it in `hooks/highlight.ts`.
+- `hooks/vendor/marked.js` is marked 18.0.14, the `lib/marked.esm.js` file from
+  its npm package (MIT, see `hooks/vendor/marked.LICENSE`).
+- `hooks/vendor/hljs/` is highlight.js 11.12.0: `es/core.js` and
+  `es/languages/<name>.min.js` from `@highlightjs/cdn-assets`, each language
+  saved as `<name>.js` (BSD-3-Clause, see `hooks/vendor/hljs/LICENSE`). To add
+  a language, copy its file in and register it in `hooks/highlight.ts`.
 
 ## License
 
