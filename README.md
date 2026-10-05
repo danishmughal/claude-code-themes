@@ -19,6 +19,23 @@ reply in a Monokai Pro palette:
 It only changes what's drawn. The saved transcript and what Claude reads are
 untouched, and it adds no tokens to any request.
 
+## Contents
+
+- [Install](#install)
+- [Pick a theme](#pick-a-theme)
+- [Themes](#themes)
+  - [monokai-pro](#monokai-pro)
+  - [monokai-pro-classic](#monokai-pro-classic)
+  - [monokai-pro-machine](#monokai-pro-machine)
+  - [monokai-pro-octagon](#monokai-pro-octagon)
+  - [monokai-pro-ristretto](#monokai-pro-ristretto)
+  - [monokai-pro-spectrum](#monokai-pro-spectrum)
+- [Update](#update)
+- [If replies aren't colored](#if-replies-arent-colored)
+- [How it works](#how-it-works)
+- [Vendored code](#vendored-code)
+- [License](#license)
+
 ## Install
 
 You need Claude Code 2.1.287 or later and a truecolor terminal.
@@ -49,18 +66,54 @@ theme; Warp, iTerm2 and most editors ship a Monokai Pro theme of each name.
 | `monokai-pro-ristretto` | `#fd6883` | `#f38d70` | `#f9cc6c` | `#adda78` | `#85dacc` | `#a8a9eb` |
 | `monokai-pro-spectrum` | `#fc618d` | `#fd9353` | `#fce566` | `#7bd88f` | `#5ad4e6` | `#948ae3` |
 
-![The same reply in each of the six themes, on each theme's terminal background](docs/screenshots/themes.png)
-
-The screenshots are real Claude Code sessions, each on its theme's Monokai Pro
-terminal background. Single shots of every theme, and of stock Claude Code,
-are in [`docs/screenshots`](docs/screenshots).
-
 To change it, run `/plugin configure themes@claude-code-themes` in a session,
 or set it when you install:
 
 ```bash
 claude plugin install themes@claude-code-themes --config theme=monokai-pro
 ```
+
+## Themes
+
+Each screenshot is a real Claude Code session showing the same reply, on the
+theme's own Monokai Pro terminal background. For comparison, here is
+[stock Claude Code](docs/screenshots/default.png).
+
+### monokai-pro
+
+The Monokai Pro default, on a warm charcoal background, `#2d2a2e`.
+
+![A Claude Code reply in the monokai-pro theme](docs/screenshots/monokai-pro.png)
+
+### monokai-pro-classic
+
+The original Monokai colors, on `#272822`. This is the plugin's default.
+
+![A Claude Code reply in the monokai-pro-classic theme](docs/screenshots/monokai-pro-classic.png)
+
+### monokai-pro-machine
+
+Cooler, brighter colors on a blue-gray background, `#273136`.
+
+![A Claude Code reply in the monokai-pro-machine theme](docs/screenshots/monokai-pro-machine.png)
+
+### monokai-pro-octagon
+
+Softer, muted colors on a navy background, `#282a3a`.
+
+![A Claude Code reply in the monokai-pro-octagon theme](docs/screenshots/monokai-pro-octagon.png)
+
+### monokai-pro-ristretto
+
+Warm colors on a dark brown background, `#2c2525`.
+
+![A Claude Code reply in the monokai-pro-ristretto theme](docs/screenshots/monokai-pro-ristretto.png)
+
+### monokai-pro-spectrum
+
+Saturated colors on a neutral gray background, `#222222`.
+
+![A Claude Code reply in the monokai-pro-spectrum theme](docs/screenshots/monokai-pro-spectrum.png)
 
 ## Update
 
